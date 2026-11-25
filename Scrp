@@ -155,7 +155,7 @@ end
 local function corner(o,r) mk("UICorner",{CornerRadius=UDim.new(0,r or 8)},o) end
 local function stroke(o,c,t) return mk("UIStroke",{Color=c,Thickness=t or 1,ApplyStrokeMode=Enum.ApplyStrokeMode.Border},o) end
 
-local target=env.BackItemsTarget or LP
+local target=LP
 local guiConns={}   -- conexoes da janela (morrem ao fechar no X)
 local wConns={}     -- conexoes do vigia (continuam ao fechar no X)
 local guiAlive=true
@@ -768,7 +768,6 @@ closeGui()
 watching=false
 for _,c in ipairs(wConns) do pcall(function() c:Disconnect() end) end
 end
-env.BackItemsRemove=function(plr) removeKind(plr,"H") removeKind(plr,"G") end
 bClose.Activated:Connect(closeGui)
 
 refreshPlayers() updateStatus() setTab("S")
